@@ -158,8 +158,7 @@ export default function ProductDetails() {
                 </AccordionTrigger>
 
                 <AccordionContent>
-                  Yes. It comes with default styles that matches the other
-                  components&apos; aesthetic.
+                  <Review />
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">

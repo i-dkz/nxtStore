@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Card from "@/components/ProductCard";
 import Skeleton from "@/components/Skeleton";
 import Link from "next/link";
@@ -10,7 +10,7 @@ type Product = {
   description: string;
   thumbnail: string;
   price: number;
-}
+};
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ export default function Home() {
       } catch (error) {
         return <>Error loading product</>;
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
     fetchData();
@@ -42,11 +42,7 @@ export default function Home() {
       </h1>
       <div className="flex flex-wrap w-full h-[100vh] justify-center items-center gap-4">
         {isLoading
-          ? skeletons.map((skeleton) => (
-              
-                <Skeleton key={skeleton} />
-              
-            )) 
+          ? skeletons.map((skeleton) => <Skeleton key={skeleton} />)
           : products.map((product: Product) => (
               <Link key={product.id} href={`./details/${product.id}`}>
                 <Card

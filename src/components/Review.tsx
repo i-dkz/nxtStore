@@ -30,9 +30,9 @@ const reviews = [
 const Review = () => {
   return (
     <>
-      {reviews.map((review) => (
-        <div className="flex flex-col gap-1 mb-10">
-          <h3 className="font-bold text-base">{review.title}</h3>
+      {reviews.map((review, index) => (
+        <div key={index} className="flex flex-col gap-1 mb-10">
+          <h3 className="text-base font-bold">{review.title}</h3>
           <div className="flex gap-3">
               <StarRating rating={review.rating} />
               {review.user}
