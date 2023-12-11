@@ -58,13 +58,14 @@ export default function ProductDetails() {
   const fullPrice = (product.price / product.discountPercentage).toFixed(2);
 
   const addToCart = useCartStore((state) => state.addToCart);
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   const handleAddToCart = () => {
     const { id, title, price } = product;
     const cartProduct: CartProduct = { id, title, price, quantity: qty };
 
     addToCart(cartProduct);
+    setQty(1);
   };
 
   useEffect(() => {
