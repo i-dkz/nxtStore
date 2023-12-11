@@ -147,7 +147,7 @@ export default function ProductDetails() {
               >
                 <CgMathPlus size={20} />
               </Button>
-              <Input className="w-[50px]" value={qty} />
+              <Input className="w-[50px]" defaultValue={qty} />
               <Button
                 className="transition-transform transform duration-10 focus:outline-none active:scale-90"
                 variant={"outline"}
