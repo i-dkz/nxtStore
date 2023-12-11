@@ -85,8 +85,6 @@ export default function ProductDetails() {
     }
   }, [id]);
 
-
-
   if (isLoading) {
     return (
       <div className="flex justify-center">
@@ -137,15 +135,19 @@ export default function ProductDetails() {
             <div className="flex items-center gap-3">
               <Button
                 onClick={handleAddToCart}
-                className="text-white bg-black rounded-md hover:bg-slate-700"
+                className="text-white transition-transform transform bg-black rounded-md duration-10 hover:bg-slate-700 focus:outline-none active:scale-90"
               >
                 Add to Cart
               </Button>
-              <Button variant={"outline"} onClick={() => setQty(qty + 1)}>
+              <Button className="transition-transform transform duration-10 focus:outline-none active:scale-90" variant={"outline"} onClick={() => setQty(qty + 1)}>
                 <CgMathPlus size={20} />
               </Button>
-              <Input className="w-[50px]" value={qty > 0 ? qty : 0} />
-              <Button variant={"outline"} onClick={() => setQty(qty > 0 ? qty - 1 : qty )}>
+              <Input className="w-[50px]" value={qty} />
+              <Button
+              className="transition-transform transform duration-10 focus:outline-none active:scale-90"
+                variant={"outline"}
+                onClick={() => setQty(qty > 0 ? qty - 1 : qty)}
+              >
                 <CgMathMinus />
               </Button>
             </div>
