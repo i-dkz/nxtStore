@@ -139,7 +139,7 @@ export default function ProductDetails() {
               >
                 Add to Cart
               </Button>
-              <Button className="transition-transform transform duration-10 focus:outline-none active:scale-90" variant={"outline"} onClick={() => setQty(qty + 1)}>
+              <Button className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90" variant={"outline"} onClick={() => setQty(qty + 1)}>
                 <CgMathPlus size={20} />
               </Button>
               <Input className="w-[50px]" value={qty} />

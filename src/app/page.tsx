@@ -36,7 +36,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
+    <main className="z-10">
       <h1 className="flex items-center justify-center w-full mb-10 text-3xl font-bold">
         Top Deals!
       </h1>

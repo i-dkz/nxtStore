@@ -11,7 +11,7 @@ const NavBar = () => {
   const totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
 
   return (
-    <div className="flex h-[60px] w-full border-b fixed bg-white items-center z-100">
+    <div className="flex h-[60px] w-full border-b bg-white items-center z-1000">
       <Link href="../">
         <div className="flex items-center gap-3 mx-4">
           <SiEventstore size={30} />
