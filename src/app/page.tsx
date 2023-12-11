@@ -43,9 +43,9 @@ export default function Home() {
       <div className="flex flex-wrap w-full h-[100vh] justify-center items-center gap-4">
         {isLoading
           ? skeletons.map((skeleton) => (
-              <div className="w-[300px] h-[300px]" key={skeleton}>
-                <Skeleton />
-              </div>
+              
+                <Skeleton key={skeleton} />
+              
             )) 
           : products.map((product: Product) => (
               <Link key={product.id} href={`./details/${product.id}`}>

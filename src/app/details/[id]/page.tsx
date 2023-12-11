@@ -113,15 +113,8 @@ export default function ProductDetails() {
           <div className="flex flex-col gap-4 items-start w-full max-w-[380px]">
             <div>
               <h1 className="text-3xl font-bold">{product.title}</h1>
-              <span className="text-gray-500">{product.category}</span>
+              <span className="text-sm text-gray-500">{product.category}</span>
             </div>
-            <span className="text-xs">
-              <strong>brand:</strong> {product.brand}
-            </span>
-
-            <span className="text-xs font-bold">
-              SOLD AND SHIPPED BY NXTSTORE
-            </span>
             <div>
               <p className="text-xs font-bold text-red-700">
                 SAVE ${fullPrice}
@@ -130,6 +123,14 @@ export default function ProductDetails() {
                 ${product.price}
               </p>
             </div>
+            <span className="text-xs">
+              <strong>brand:</strong> {product.brand}
+            </span>
+
+            <span className="text-xs font-bold">
+              SOLD AND SHIPPED BY NXTSTORE
+            </span>
+
             <span>{product.description}</span>
             <span>
               <Stock stock={product.stock} />
@@ -144,14 +145,18 @@ export default function ProductDetails() {
               <AccordionItem value="item-1">
                 <AccordionTrigger>Free Delivery and Returns</AccordionTrigger>
                 <AccordionContent>
-                  <p>Free standard delivery on orders over $200.</p>
-                  • You can return your order no questions, within 30 days.
+                  <p>Free standard delivery on orders over $200.</p>• You can
+                  return your order no questions, within 30 days.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <span>
-                  <AccordionTrigger>Reviews <StarRating rating={product.rating} />{product.rating}</AccordionTrigger>
-                </span>
+                <AccordionTrigger>
+                  <span className="flex gap-3">
+                    Reviews <StarRating rating={product.rating} />
+                    {product.rating}
+                  </span>
+                </AccordionTrigger>
+
                 <AccordionContent>
                   Yes. It comes with default styles that matches the other
                   components&apos; aesthetic.
