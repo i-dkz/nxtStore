@@ -145,7 +145,7 @@ export default function ProductDetails() {
                 <CgMathPlus size={20} />
               </Button>
               <Input className="w-[50px]" value={qty > 0 ? qty : 0} />
-              <Button variant={"outline"} onClick={() => setQty(qty - 1)}>
+              <Button variant={"outline"} onClick={() => setQty(qty > 0 ? qty - 1 : qty )}>
                 <CgMathMinus />
               </Button>
             </div>
