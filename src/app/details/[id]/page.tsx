@@ -140,14 +140,18 @@ export default function ProductDetails() {
               >
                 Add to Cart
               </Button>
-              <Button className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90" variant={"outline"} onClick={() => setQty(qty + 1)}>
+              <Button
+                className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90"
+                variant={"outline"}
+                onClick={() => setQty(qty < 99 ? qty + 1 : qty)}
+              >
                 <CgMathPlus size={20} />
               </Button>
               <Input className="w-[50px]" value={qty} />
               <Button
-              className="transition-transform transform duration-10 focus:outline-none active:scale-90"
+                className="transition-transform transform duration-10 focus:outline-none active:scale-90"
                 variant={"outline"}
-                onClick={() => setQty(qty > 0 ? qty - 1 : qty)}
+                onClick={() => setQty(qty > 1 ? qty - 1 : qty)}
               >
                 <CgMathMinus />
               </Button>

@@ -8,7 +8,7 @@ import CartIcon from "./CartIcon";
 const NavBar = () => {
   const cart = useCartStore((state) => state.cart);
 
-  const totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
+  let totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
 
   return (
     <div className="flex h-[60px] w-full border-b bg-white items-center z-1000">
