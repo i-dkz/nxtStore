@@ -21,7 +21,9 @@ const NavBar = () => {
       <SearchBar />
       <div className="flex items-center justify-evenly w-[300px] ">
         <div className="flex items-center gap-3">
-          <CartIcon qty={totalQuantity}/>
+          <Link href="../cart">
+            <CartIcon qty={totalQuantity}/>
+          </Link>
         </div>
         <div>login</div>
       </div>
