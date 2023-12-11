@@ -1,9 +1,9 @@
 'use client'
 import { SiEventstore } from "react-icons/si";
-import { MdLocalGroceryStore } from "react-icons/md";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
 import { useCartStore } from "@/store/CartStore";
+import CartIcon from "./CartIcon";
 
 const NavBar = () => {
   const cart = useCartStore((state) => state.cart);
@@ -21,7 +21,7 @@ const NavBar = () => {
       <SearchBar />
       <div className="flex items-center justify-evenly w-[300px] ">
         <div className="flex items-center gap-3">
-          <MdLocalGroceryStore size={30} />{totalQuantity}
+          <CartIcon qty={totalQuantity}/>
         </div>
         <div>login</div>
       </div>
