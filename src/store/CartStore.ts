@@ -1,5 +1,5 @@
 import { CartActions, CartState } from '@/app/details/[id]/page';
-import create from 'zustand';
+import { create } from 'zustand';
 
 export const useCartStore = create<CartState & CartActions>((set) => ({
   cart: [],

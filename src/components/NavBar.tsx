@@ -8,6 +8,8 @@ import { useCartStore } from "@/store/CartStore";
 const NavBar = () => {
   const cart = useCartStore((state) => state.cart);
 
+  const totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
+
   return (
     <div className="flex h-[60px] w-full border-b fixed bg-white items-center ">
       <Link href="../">
@@ -18,8 +20,8 @@ const NavBar = () => {
       </Link>
       <SearchBar />
       <div className="flex items-center justify-evenly w-[300px] ">
-        <div className="flex gap-3 items-center">
-          <MdLocalGroceryStore size={30} />{cart.length}
+        <div className="flex items-center gap-3">
+          <MdLocalGroceryStore size={30} />{totalQuantity}
         </div>
         <div>login</div>
       </div>

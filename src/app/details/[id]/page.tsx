@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/accordion";
 import Review from "@/components/Review";
 import { Button } from "@/components/ui/button";
+import { CgMathMinus, CgMathPlus } from "react-icons/cg";
+import { Input } from "@/components/ui/input";
 
 // Define the type for a product in the shopping cart
 export interface CartProduct {
@@ -56,12 +58,14 @@ export default function ProductDetails() {
   const fullPrice = (product.price / product.discountPercentage).toFixed(2);
 
   const addToCart = useCartStore((state) => state.addToCart);
+  const [qty, setQty] = useState(0);
 
-  const [cart, setCart] = useState(0);
+  const handleAddToCart = () => {
+    const { id, title, price } = product;
+    const cartProduct: CartProduct = { id, title, price, quantity: qty };
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(addToCart));
-  }, [addToCart]);
+    addToCart(cartProduct);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,13 +85,7 @@ export default function ProductDetails() {
     }
   }, [id]);
 
-  const handleAddToCart = () => {
-    const { id, title, price } = product;
-    const cartProduct: CartProduct = { id, title, price, quantity: 1 };
 
-    addToCart(cartProduct);
-    setCart(cart + 1);
-  };
 
   if (isLoading) {
     return (
@@ -135,12 +133,22 @@ export default function ProductDetails() {
             <span>
               <Stock stock={product.stock} />
             </span>
-            <Button
-              onClick={handleAddToCart}
-              className="w-[100px] h-[30px] bg-black text-white rounded-md hover:bg-slate-700"
-            >
-              Add to Cart
-            </Button>
+
+            <div className="flex items-center gap-3">
+              <Button
+                onClick={handleAddToCart}
+                className="text-white bg-black rounded-md hover:bg-slate-700"
+              >
+                Add to Cart
+              </Button>
+              <Button variant={"outline"} onClick={() => setQty(qty + 1)}>
+                <CgMathPlus size={20} />
+              </Button>
+              <Input className="w-[50px]" value={qty > 0 ? qty : 0} />
+              <Button variant={"outline"} onClick={() => setQty(qty - 1)}>
+                <CgMathMinus />
+              </Button>
+            </div>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger>Free Delivery and Returns</AccordionTrigger>
