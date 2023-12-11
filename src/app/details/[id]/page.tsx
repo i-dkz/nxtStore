@@ -13,7 +13,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Review from "@/components/Review";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 // Define the type for a product in the shopping cart
 export interface CartProduct {
@@ -37,9 +37,6 @@ export interface CartActions {
 
 export default function ProductDetails() {
   const { id } = useParams();
-  
-
-
 
   const [product, setProduct] = useState({
     id: 0,
@@ -51,7 +48,7 @@ export default function ProductDetails() {
     rating: 0,
     discountPercentage: 0,
     stock: 0,
-    category: ""
+    category: "",
   }); // Provide a default type
 
   const [isLoading, setLoading] = useState(true);
@@ -60,10 +57,10 @@ export default function ProductDetails() {
 
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const [cart, setCart] = useState(0); 
+  const [cart, setCart] = useState(0);
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(addToCart));
+    localStorage.setItem("cart", JSON.stringify(addToCart));
   }, [addToCart]);
 
   useEffect(() => {
@@ -84,14 +81,12 @@ export default function ProductDetails() {
     }
   }, [id]);
 
-  
-
   const handleAddToCart = () => {
     const { id, title, price } = product;
     const cartProduct: CartProduct = { id, title, price, quantity: 1 };
-   
+
     addToCart(cartProduct);
-    setCart(cart+1)
+    setCart(cart + 1);
   };
 
   if (isLoading) {
@@ -139,12 +134,37 @@ export default function ProductDetails() {
             <span>
               <Stock stock={product.stock} />
             </span>
-            <button
+            <Button
               onClick={handleAddToCart}
-              className="border w-[100px] h-[30px] bg-black text-white rounded-md hover:bg-slate-700"
+              className="w-[100px] h-[30px] bg-black text-white rounded-md hover:bg-slate-700"
             >
               Add to Cart
-            </button>
+            </Button>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Free Delivery and Returns</AccordionTrigger>
+                <AccordionContent>
+                  <p>Free standard delivery on orders over $200.</p>
+                  • You can return your order no questions, within 30 days.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <span>
+                  <AccordionTrigger>Reviews <StarRating rating={product.rating} />{product.rating}</AccordionTrigger>
+                </span>
+                <AccordionContent>
+                  Yes. It comes with default styles that matches the other
+                  components&apos; aesthetic.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>Is it animated?</AccordionTrigger>
+                <AccordionContent>
+                  Yes. It&apos;s animated by default, but you can disable it if
+                  you prefer.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </div>
