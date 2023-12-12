@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { useCartStore } from "@/store/CartStore";
 
 interface Props {
@@ -54,7 +55,7 @@ const CartItem = ({
   };
 
   return (
-    <div className="flex h-[140px] border rounded-md p-4">
+    <div className="flex p-4 border rounded-md">
       <div className="flex w-full gap-4">
         <Link
           href={`../details/${id}`}
@@ -69,21 +70,31 @@ const CartItem = ({
           </div>
           <span className="text-slate-400">{category}</span>
           <span>Quantity: {quantity}</span>
-          <div className="flex gap-2">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              <Button
+                className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90"
+                variant={"outline"}
+                onClick={handleAddToCart}
+              >
+                <CgMathPlus size={20} />
+              </Button>
+              <Button
+                className="transition-transform transform duration-10 focus:outline-none active:scale-90"
+                variant={"outline"}
+                onClick={handleSubtractFromCart}
+              >
+                <CgMathMinus />
+              </Button>
+            </div>
             <Button
-              className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90"
-              variant={"outline"}
-              onClick={handleAddToCart}
-            >
-              <CgMathPlus size={20} />
-            </Button>
-            <Button
-              className="transition-transform transform duration-10 focus:outline-none active:scale-90"
-              variant={"outline"}
-              onClick={handleSubtractFromCart}
-            >
-              <CgMathMinus />
-            </Button>
+                className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90"
+                variant={"outline"}
+                onClick={() => removeFromCart(id)}
+              >
+                <FaRegTrashAlt />
+              </Button>
+            
           </div>
         </div>
       </div>
