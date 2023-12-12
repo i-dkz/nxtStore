@@ -23,6 +23,8 @@ export interface CartProduct {
   title: string;
   price: number;
   quantity: number;
+  thumbnail: string;
+  category: string;
 }
 
 // Define the type for the shopping cart state
@@ -61,8 +63,15 @@ export default function ProductDetails() {
   const [qty, setQty] = useState(1);
 
   const handleAddToCart = () => {
-    const { id, title, price } = product;
-    const cartProduct: CartProduct = { id, title, price, quantity: qty };
+    const { id, title, price, thumbnail, category } = product;
+    const cartProduct: CartProduct = {
+      id,
+      title,
+      price,
+      thumbnail,
+      category,
+      quantity: qty,
+    };
 
     addToCart(cartProduct);
     setQty(1);
@@ -147,7 +156,11 @@ export default function ProductDetails() {
               >
                 <CgMathPlus size={20} />
               </Button>
-              <Input className="w-[50px]" value={qty} onChange={() => console.log('dafuck')}/>
+              <Input
+                className="w-[50px]"
+                value={qty}
+                onChange={() => console.log("dafuck")}
+              />
               <Button
                 className="transition-transform transform duration-10 focus:outline-none active:scale-90"
                 variant={"outline"}

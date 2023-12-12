@@ -16,7 +16,7 @@ interface Props {
 
 export function OrderSummary({ subtotal }: Props) {
   return (
-    <Card className={cn("w-[380px]")}>
+    <Card className={cn("w-[380px] h-[400px]")}>
       <CardHeader>
         <CardTitle>Order Summary</CardTitle>
       </CardHeader>
