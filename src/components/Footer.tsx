@@ -52,18 +52,15 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer
-      className="flex flex-col pb-8 mt-8 md:flex-row bg-slate-50"
-    >
-      <div className="flex justify-center px-8 pt-8 md:w-1/2">
-        nxtStore's mission is to bring tech to your doorstep in the fastest amount of time.
-      </div>
-      <div className="flex gap-16 pt-8 mt-8 justify-evenly md:w-1/2 md:mt-0">
+    <footer className="flex flex-col items-center bg-slate-50">
+      <div className="flex flex-col pb-8 mt-8 md:flex-row w-[80%]">
+        <div className="flex justify-center pt-8 md:w-1/2">
+          nxtStore's mission is to bring tech to your doorstep in the fastest
+          amount of time.
+        </div>
+        <div className="flex gap-16 pt-8 mt-8 justify-evenly md:w-1/2 md:mt-0">
           {links.map((obj, index) => (
-            <div
-              key={index}
-              className="flex flex-col gap-4"
-            >
+            <div key={index} className="flex flex-col gap-4">
               <h3 className="font-bold">{obj.title}</h3>
               {obj.links.map((link, linkIndex) => (
                 <Link key={linkIndex} href={link.link}>
@@ -72,7 +69,9 @@ const Footer = () => {
               ))}
             </div>
           ))}
+        </div>
       </div>
+      <div className="w-[80%] border-t py-8">© 2023 nxtStore, Inc. All rights reserved</div>
     </footer>
   );
 };
