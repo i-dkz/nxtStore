@@ -20,7 +20,7 @@ const Cart = () => {
         Your Cart
       </h1>
       <div className="flex flex-wrap justify-center w-full gap-4">
-        <div className="flex flex-col gap-4 w-[90%] max-w-[670px]">
+        <div className="flex flex-col gap-4 w-[90%] max-w-[670px] ">
           {cart.map((item, index) => (
             <CartItem
               key={index}

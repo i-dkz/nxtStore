@@ -13,7 +13,7 @@ const CartItem = ({ id, title, thumbnail, price, category, quantity }: Props) =>
   const subtotal = quantity * price;
 
   return (
-    <div className="flex h-[180px] border rounded-md p-4">
+    <div className="flex h-[130px] border rounded-md p-4">
       <div className="flex w-full gap-4">
         <Link href={`../details/${id}`} className="flex overflow-hidden border rounded-md w-[150px] h-[100px]">
           <img src={thumbnail} className="object-cover" />
