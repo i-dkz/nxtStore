@@ -99,8 +99,8 @@ export default function ProductDetails() {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="flex flex-col h-[100vh] w-[90%] gap-5 flex-wrap items-center">
+    <div className="flex items-center justify-center">
+      <div className="flex flex-col  w-[90%] gap-5 flex-wrap items-center">
         <div className="flex flex-wrap justify-center w-full gap-5">
           <img
             src={product.thumbnail}
