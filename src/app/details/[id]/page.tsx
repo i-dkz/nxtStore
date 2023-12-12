@@ -16,6 +16,7 @@ import Review from "@/components/Review";
 import { Button } from "@/components/ui/button";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 
 // Define the type for a product in the shopping cart
 export interface CartProduct {
@@ -41,6 +42,7 @@ export interface CartActions {
 
 export default function ProductDetails() {
   const { id } = useParams();
+  const { toast } = useToast();
 
   const [product, setProduct] = useState({
     id: 0,
@@ -144,11 +146,18 @@ export default function ProductDetails() {
 
             <div className="flex items-center gap-3">
               <Button
-                onClick={handleAddToCart}
+                onClick={() => {
+                  handleAddToCart;
+                  toast({
+                    title: "Added to Cart!",
+                    description: `Added ${qty} ${product.title} to cart`,
+                  });
+                }}
                 className="text-white transition-transform transform bg-black rounded-md duration-10 hover:bg-slate-700 focus:outline-none active:scale-90"
               >
                 Add to Cart
               </Button>
+
               <Button
                 className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90"
                 variant={"outline"}
@@ -159,7 +168,7 @@ export default function ProductDetails() {
               <Input
                 className="w-[50px]"
                 value={qty}
-                onChange={() => console.log("dafuck")}
+                onChange={() => console.log(qty)}
               />
               <Button
                 className="transition-transform transform duration-10 focus:outline-none active:scale-90"
