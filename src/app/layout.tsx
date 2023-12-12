@@ -23,6 +23,7 @@ export default function RootLayout({
         <NavBar />
         <Spacer />
         <main className="w-[100vw]">{children}</main>
+        <Spacer />
         <Footer />
       </body>
     </html>
