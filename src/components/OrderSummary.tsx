@@ -20,7 +20,7 @@ export function OrderSummary({ subtotal }: Props) {
   const total = (subtotal + shipping + tax).toFixed(2);
 
   return (
-    <Card className={cn("w-[380px] h-[400px]")}>
+    <Card className={cn("max-w-[380px] w-[90%] h-[400px]")}>
       <CardHeader>
         <CardTitle>Order Summary</CardTitle>
       </CardHeader>

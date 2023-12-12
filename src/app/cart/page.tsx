@@ -10,7 +10,10 @@ const Cart = () => {
 
   useEffect(() => {
     // Calculate subtotal based on the quantity of each item in the cart
-    const newSubtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    const newSubtotal = cart.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
     setSubtotal(newSubtotal);
   }, [cart]);
 
@@ -20,20 +23,26 @@ const Cart = () => {
         Your Cart
       </h1>
       <div className="flex flex-wrap justify-center w-full gap-4">
-        <div className="flex flex-col gap-4 w-[90%] max-w-[670px] ">
-          {cart.map((item, index) => (
-            <CartItem
-              key={index}
-              id={item.id}
-              title={item.title}
-              thumbnail={item.thumbnail}
-              price={item.price}
-              category={item.category}
-              quantity={item.quantity}
-            />
-          ))}
-        </div>
-        <OrderSummary subtotal={subtotal} />
+        {cart.length > 0 ? (
+          <>
+            <div className="flex flex-col gap-4 w-[90%] max-w-[670px] ">
+              {cart.map((item, index) => (
+                <CartItem
+                  key={index}
+                  id={item.id}
+                  title={item.title}
+                  thumbnail={item.thumbnail}
+                  price={item.price}
+                  category={item.category}
+                  quantity={item.quantity}
+                />
+              ))}
+            </div>
+            <OrderSummary subtotal={subtotal} />
+          </>
+        ) : (
+          <h2 className="flex justify-center text-2xl font-bold w-[380px] h-[350px] items-center">Your cart is empty!</h2>
+        )}
       </div>
     </div>
   );
