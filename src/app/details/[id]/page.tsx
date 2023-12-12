@@ -147,7 +147,7 @@ export default function ProductDetails() {
             <div className="flex items-center gap-3">
               <Button
                 onClick={() => {
-                  handleAddToCart;
+                  handleAddToCart();
                   toast({
                     title: "Added to Cart!",
                     description: `Added ${qty} ${product.title} to cart`,
