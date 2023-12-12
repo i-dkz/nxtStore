@@ -71,7 +71,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className="w-[80%] border-t py-8">© 2023 nxtStore, Inc. All rights reserved</div>
+      <div className="w-[80%] border-t py-8">&copy; 2023 nxtStore, Inc. All rights reserved</div>
     </footer>
   );
 };
