@@ -143,11 +143,11 @@ export default function ProductDetails() {
               <Button
                 className="transition-transform transform z-5 duration-10 focus:outline-none active:scale-90"
                 variant={"outline"}
-                onClick={() => setQty(qty < 99 ? qty + 1 : qty)}
+                onClick={() => setQty(qty + 1)}
               >
                 <CgMathPlus size={20} />
               </Button>
-              <Input className="w-[50px]" defaultValue={qty} />
+              <Input className="w-[50px]" value={qty} onChange={() => console.log('dafuck')}/>
               <Button
                 className="transition-transform transform duration-10 focus:outline-none active:scale-90"
                 variant={"outline"}
