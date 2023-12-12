@@ -17,7 +17,7 @@ interface Props {
 export function OrderSummary({ subtotal }: Props) {
   const shipping = subtotal >= 200 ? 0 : 30;
   const tax = .12 * (subtotal + shipping);
-  const total = subtotal + shipping + tax
+  const total = (subtotal + shipping + tax).toFixed(2);
 
   return (
     <Card className={cn("w-[380px] h-[400px]")}>
@@ -35,11 +35,11 @@ export function OrderSummary({ subtotal }: Props) {
         </div>
         <div className="flex justify-between">
           <span>Estimated Delivery & Handling</span>
-          <span>{shipping === 0 ? "Free" : "$" + shipping}</span>
+          <span>{shipping === 0 ? "Free" : "$" + shipping.toFixed(2)}</span>
         </div>
         <div className="flex justify-between">
           <span>Tax</span>
-          <span>${tax}</span>
+          <span>${tax.toFixed(2)}</span>
         </div>
         <div className="flex justify-center">
           <hr className="w-full" />
