@@ -36,11 +36,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="z-10">
+    <div className="w-full">
       <h1 className="flex items-center justify-center w-full mb-10 text-3xl font-bold">
         Top Deals!
       </h1>
-      <div className="flex flex-wrap w-full h-[100vh] justify-center items-center gap-4">
+      <div className="flex flex-wrap items-center justify-center w-full gap-4">
         {isLoading
           ? skeletons.map((skeleton) => <Skeleton key={skeleton} />)
           : products.map((product: Product) => (
@@ -54,6 +54,6 @@ export default function Home() {
               </Link>
             ))}
       </div>
-    </main>
+    </div>
   );
 }
