@@ -7,7 +7,7 @@ interface Props {
 
 const Card = ({ title, description, thumbnail, price }: Props) => {
   return (
-    <div className="flex flex-col gap-2 w-[400px] h-[400px] rounded-md border overflow-hidden">
+    <div className="flex flex-col gap-2 w-[380px] h-[400px] rounded-md border overflow-hidden">
       <img
         src={thumbnail}
         className="object-cover w-full h-full border-b"
