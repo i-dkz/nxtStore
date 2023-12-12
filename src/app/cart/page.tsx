@@ -6,6 +6,7 @@ import { OrderSummary } from "@/components/OrderSummary";
 const Cart = () => {
   const { cart } = useCartStore();
 
+
   return (
     <div className="flex flex-col items-center justify-center w-full">
       <h1 className="flex w-[90%] max-w-[1080px] text-4xl font-bold mb-4">
@@ -15,7 +16,7 @@ const Cart = () => {
         <div className="flex flex-col gap-4">
           {cart.map((item, index) => (
             <CartItem
-              key={index}
+              key={item.id}
               title={item.title}
               thumbnail={item.thumbnail}
               price={item.price}

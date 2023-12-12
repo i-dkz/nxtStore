@@ -8,6 +8,7 @@ interface Props {
 
 const CartItem = ({ title, thumbnail, price, category, quantity }: Props) => {
   const subtotal = quantity * price;
+  
   return (
     <div className="w-[670px] h-[180px] border rounded-md p-4">
       <div className="flex gap-4">
