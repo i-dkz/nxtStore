@@ -15,8 +15,8 @@ interface Props {
 }
 
 export function OrderSummary({ subtotal }: Props) {
-  const shipping = subtotal >= 200 ? 0 : 30;
-  const tax = .12 * (subtotal + shipping);
+  const shipping = subtotal >= 200 || subtotal === 0 ? 0 : 30;
+  const tax = subtotal === 0 ? 0 : .12 * (subtotal + shipping);
   const total = (subtotal + shipping + tax).toFixed(2);
 
   return (
