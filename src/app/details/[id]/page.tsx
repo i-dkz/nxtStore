@@ -59,6 +59,7 @@ export default function ProductDetails() {
     discountPercentage: 0,
     stock: 0,
     category: "",
+    images: [],
   }); // Provide a default type
 
   const [isLoading, setLoading] = useState(true);
@@ -117,10 +118,21 @@ export default function ProductDetails() {
     <div className="flex items-center justify-center">
       <div className="flex flex-col  w-[90%] gap-5 flex-wrap items-center">
         <div className="flex flex-wrap justify-center w-full gap-5">
-          <img
-            src={product.thumbnail}
-            className="object-cover rounded-md w-[600px] h-[500px]"
-          />
+          <div className="flex flex-col items-center gap-2 w-[600px]">
+            <img
+              src={product.thumbnail}
+              className="object-fit rounded-md w-[600px] h-[400px]"
+            />
+            <div className="flex flex-wrap justify-center gap-6">
+              {product.images.slice(0,4).map((image, index) => (
+                <img
+                  src={image}
+                  key={index}
+                  className="object-fit w-[130px] h-[130px] rounded-md border"
+                />
+              ))}
+            </div>
+          </div>
 
           <div className="flex flex-col gap-4 items-start w-full max-w-[380px]">
             <div>
