@@ -136,7 +136,7 @@ export default function ProductDetails() {
                   key={index}
                   className={
                     image === selectedImage
-                      ? "object-fit w-[130px] h-[130px] rounded-md border-2 border-slate-900 cursor-pointer"
+                      ? "object-fit w-[130px] h-[130px] rounded-md border-2 p-0.5 border-slate-400 cursor-pointer"
                       : "object-fit w-[130px] h-[130px] rounded-md border cursor-pointer"
                   }
                   onClick={() => setSelectedImage(image)}

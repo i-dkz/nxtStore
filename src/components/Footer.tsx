@@ -57,8 +57,7 @@ const Footer = () => {
     <footer className="flex flex-col items-center bg-slate-50">
       <div className="flex flex-col pb-8 mt-8 md:flex-row w-[80%]">
         <div className="flex flex-col pt-8 gap-14 md:w-1/2">
-          nxtStore&apos;s mission is to bring tech to your doorstep in the fastest
-          amount of time.
+          nxtStore&apos;s mission is to bring the best deals to your doorstep faster than anyone else
 
           <div className="flex gap-4">
               <Link href="./">
