@@ -160,6 +160,7 @@ export default function ProductDetails() {
                         altText="Cart"
                         className="w-[75px] flex justify-between"
                         onClick={() => router.push("../cart")}
+                        onTouchStart={() => router.push("../cart")}
                       >
                         Cart
                         <FaLongArrowAltRight />
