@@ -10,7 +10,7 @@ const Card = ({ title, description, thumbnail, price }: Props) => {
     <div className="flex flex-col gap-2 w-[380px] h-[400px] rounded-md border overflow-hidden">
       <img
         src={thumbnail}
-        className="w-full h-full border-b object-fit"
+        className="h-[200px] object-cover border-b"
         alt={title}
       />
 
