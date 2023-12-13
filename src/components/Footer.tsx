@@ -1,5 +1,7 @@
-import { TemplateContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
+import { BsTwitterX } from "react-icons/bs";
+import { FaInstagram } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
 
 const links = [
   {
@@ -54,9 +56,21 @@ const Footer = () => {
   return (
     <footer className="flex flex-col items-center bg-slate-50">
       <div className="flex flex-col pb-8 mt-8 md:flex-row w-[80%]">
-        <div className="flex justify-center pt-8 md:w-1/2">
+        <div className="flex flex-col pt-8 gap-14 md:w-1/2">
           nxtStore&apos;s mission is to bring tech to your doorstep in the fastest
           amount of time.
+
+          <div className="flex gap-4">
+              <Link href="./">
+                  <BsTwitterX size={24}/>
+              </Link>
+              <Link href="./">
+                  <FaInstagram size={24}/>
+              </Link>
+              <Link href="./">
+                  <FaFacebook size={24}/>
+              </Link>
+          </div>
         </div>
         <div className="flex gap-16 pt-8 mt-8 justify-evenly md:w-1/2 md:mt-0">
           {links.map((obj, index) => (
