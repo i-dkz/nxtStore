@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import { useState, useEffect } from "react";
 import StarRating from "@/components/StarRating";
@@ -18,9 +18,8 @@ import { Button } from "@/components/ui/button";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
-import { ToastAction } from "@/components/ui/toast"
+import { ToastAction } from "@/components/ui/toast";
 import { FaLongArrowAltRight } from "react-icons/fa";
-import Link from "next/link";
 
 // Define the type for a product in the shopping cart
 export interface CartProduct {
@@ -47,6 +46,7 @@ export interface CartActions {
 export default function ProductDetails() {
   const { id } = useParams();
   const { toast } = useToast();
+  const router = useRouter();
 
   const [product, setProduct] = useState({
     id: 0,
@@ -155,7 +155,16 @@ export default function ProductDetails() {
                   toast({
                     title: "Added to Cart!",
                     description: `Added ${qty} ${product.title} to cart`,
-                    action: <Link href="../cart"><ToastAction altText="Cart" className="w-[75px] flex justify-between ">Cart<FaLongArrowAltRight /></ToastAction></Link>,
+                    action: (
+                      <ToastAction
+                        altText="Cart"
+                        className="w-[75px] flex justify-between"
+                        onClick={() => router.push("../cart")}
+                      >
+                        Cart
+                        <FaLongArrowAltRight />
+                      </ToastAction>
+                    ),
                   });
                 }}
                 className="text-white transition-transform transform bg-black rounded-md duration-10 hover:bg-slate-700 focus:outline-none active:scale-90"
