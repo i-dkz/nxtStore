@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+
 import { useState, useEffect } from "react";
 import StarRating from "@/components/StarRating";
 import Skeleton from "@/components/Skeleton";
@@ -17,6 +18,9 @@ import { Button } from "@/components/ui/button";
 import { CgMathMinus, CgMathPlus } from "react-icons/cg";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast"
+import { FaLongArrowAltRight } from "react-icons/fa";
+import Link from "next/link";
 
 // Define the type for a product in the shopping cart
 export interface CartProduct {
@@ -151,6 +155,7 @@ export default function ProductDetails() {
                   toast({
                     title: "Added to Cart!",
                     description: `Added ${qty} ${product.title} to cart`,
+                    action: <Link href="../cart"><ToastAction altText="Cart" className="w-[75px] flex justify-between ">Cart<FaLongArrowAltRight /></ToastAction></Link>,
                   });
                 }}
                 className="text-white transition-transform transform bg-black rounded-md duration-10 hover:bg-slate-700 focus:outline-none active:scale-90"
