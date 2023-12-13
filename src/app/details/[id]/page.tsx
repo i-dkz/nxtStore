@@ -47,6 +47,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const { toast } = useToast();
   const router = useRouter();
+  const [selectedImage, setSelectedImage] = useState("");
 
   const [product, setProduct] = useState({
     id: 0,
@@ -90,6 +91,7 @@ export default function ProductDetails() {
         const response = await fetch(`https://dummyjson.com/products/${id}`);
         const data = await response.json();
         setProduct(data);
+        setSelectedImage(product.images[0]);
       } catch (error) {
         return <>Error loading product</>;
       } finally {
@@ -100,7 +102,7 @@ export default function ProductDetails() {
     if (id) {
       fetchData();
     }
-  }, [id]);
+  }, [id, product.images[0]]);
 
   if (isLoading) {
     return (
@@ -114,21 +116,30 @@ export default function ProductDetails() {
     return <p>Loading...</p>;
   }
 
+
+    
+
+
   return (
     <div className="flex items-center justify-center">
       <div className="flex flex-col  w-[90%] gap-5 flex-wrap items-center">
         <div className="flex flex-wrap justify-center w-full gap-5">
-          <div className="flex flex-col items-center gap-2 w-[600px]">
+          <div className="flex flex-col items-center gap-8 w-[600px]">
             <img
-              src={product.thumbnail}
+              src={selectedImage}
               className="object-fit rounded-md w-[600px] h-[400px]"
             />
             <div className="flex flex-wrap justify-center gap-6">
-              {product.images.slice(0,4).map((image, index) => (
+              {product.images.slice(0, 4).map((image, index) => (
                 <img
                   src={image}
                   key={index}
-                  className="object-fit w-[130px] h-[130px] rounded-md border"
+                  className={
+                    image === selectedImage
+                      ? "object-fit w-[130px] h-[130px] rounded-md border-2 border-slate-900 cursor-pointer"
+                      : "object-fit w-[130px] h-[130px] rounded-md border cursor-pointer"
+                  }
+                  onClick={() => setSelectedImage(image)}
                 />
               ))}
             </div>
