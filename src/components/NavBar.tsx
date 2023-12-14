@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCartStore } from "@/store/CartStore";
 import CartIcon from "./CartIcon";
 import { Button } from "@/registry/new-york/ui/button";
-
+import { SearchDialog } from "./SearchDialog";
 
 const NavBar = () => {
   const cart = useCartStore((state) => state.cart);
@@ -16,21 +16,31 @@ const NavBar = () => {
   );
 
   return (
-    <div className="flex h-[60px] w-full border-b bg-white items-center z-1000">
+    <div className="flex h-[60px] w-full border-b bg-white items-center justify-between">
       <Link href="../">
         <div className="flex items-center gap-3 mx-4">
           <SiEventstore size={30} />
           nxtStore
         </div>
       </Link>
-      <SearchBar />
-      <div className="flex items-center justify-evenly w-[300px] ">
+
+      <div className="w-full max-sm:hidden">
+        <SearchBar />
+      </div>
+
+      <div className="sm:hidden">
+        <SearchDialog />
+      </div>
+
+      <div className="flex items-center justify-evenly w-[300px] max-sm:w-[150px]">
         <div className="flex items-center gap-3">
           <Link href="../cart">
             <CartIcon qty={totalQuantity} />
           </Link>
         </div>
-        <Link href="../login"><Button>login</Button></Link>
+        <Link href="../login">
+          <Button>login</Button>
+        </Link>
       </div>
     </div>
   );
