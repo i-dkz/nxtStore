@@ -59,9 +59,9 @@ const CartItem = ({
       <div className="flex w-full gap-4">
         <Link
           href={`../details/${id}`}
-          className="flex overflow-hidden border rounded-md w-[150px] h-[100px]"
+          className="flex overflow-hidden border rounded-md w-[150px] h-[120px]"
         >
-          <img src={thumbnail} className="object-fit" />
+          <img src={thumbnail} className="object-cover" />
         </Link>
         <div className="flex flex-col w-full">
           <div className="flex justify-between w-full">
