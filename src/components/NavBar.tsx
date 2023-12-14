@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { SiEventstore } from "react-icons/si";
 import SearchBar from "./SearchBar";
 import Link from "next/link";
@@ -8,7 +8,10 @@ import CartIcon from "./CartIcon";
 const NavBar = () => {
   const cart = useCartStore((state) => state.cart);
 
-  let totalQuantity = cart.reduce((total, product) => total + product.quantity, 0);
+  let totalQuantity = cart.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
 
   return (
     <div className="flex h-[60px] w-full border-b bg-white items-center z-1000">
@@ -22,10 +25,10 @@ const NavBar = () => {
       <div className="flex items-center justify-evenly w-[300px] ">
         <div className="flex items-center gap-3">
           <Link href="../cart">
-            <CartIcon qty={totalQuantity}/>
+            <CartIcon qty={totalQuantity} />
           </Link>
         </div>
-        <div>login</div>
+        <div><Link href="../login">login</Link></div>
       </div>
     </div>
   );
