@@ -1,7 +1,6 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-
 import { useState, useEffect } from "react";
 import StarRating from "@/components/StarRating";
 import Skeleton from "@/components/Skeleton";
@@ -115,10 +114,6 @@ export default function ProductDetails() {
   if (!product) {
     return <p>Loading...</p>;
   }
-
-
-    
-
 
   return (
     <div className="flex items-center justify-center">

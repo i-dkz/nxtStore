@@ -4,6 +4,8 @@ import SearchBar from "./SearchBar";
 import Link from "next/link";
 import { useCartStore } from "@/store/CartStore";
 import CartIcon from "./CartIcon";
+import { Button } from "@/registry/new-york/ui/button";
+
 
 const NavBar = () => {
   const cart = useCartStore((state) => state.cart);
@@ -28,7 +30,7 @@ const NavBar = () => {
             <CartIcon qty={totalQuantity} />
           </Link>
         </div>
-        <div><Link href="../login">login</Link></div>
+        <Link href="../login"><Button>login</Button></Link>
       </div>
     </div>
   );
