@@ -25,14 +25,16 @@ const NavBar = () => {
         </div>
       </Link>
 
-      <Button variant="outline" className="h-[40px] w-[50px]"><IoFilter size={20}/></Button>
-
-      <div className="w-full max-sm:hidden">
-        <SearchBar />
-      </div>
-
-      <div className="sm:hidden">
-        <SearchDialog />
+      <div className="flex justify-center w-full gap-3 max-sm:w-[100px]">
+        <Button variant="outline" className="h-[40px] w-[50px]">
+          <IoFilter size={20} />
+        </Button>
+        <div className="w-full max-sm:hidden">
+          <SearchBar />
+        </div>
+        <div className="sm:hidden">
+          <SearchDialog />
+        </div>
       </div>
 
       <div className="flex items-center justify-evenly w-[300px] max-sm:w-[150px]">
