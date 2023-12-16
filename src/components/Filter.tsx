@@ -1,46 +1,58 @@
-import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "./ui/sheet";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "./ui/input";
 import { IoFilter } from "react-icons/io5";
 import { Button } from "@/registry/new-york/ui/button";
+import { useState } from "react";
+import { ComboBox } from "./ui/combobox";
+
+
+
+const filters = {
+  categories: [
+    {
+      title: "computers",
+      computers: ["Laptops", "Desktop", "Mini PC"],
+    },
+    { title: "Phones", phones: ["Apple", "Google", "Samsung", "Huawei"] },
+  ],
+};
 
 const Filter = () => {
+  const [category, setCategory] = useState("");
+
   return (
-    <Sheet key="left">
-          <SheetTrigger asChild>
+    <>
+      <Sheet key="left">
+        <SheetTrigger asChild>
           <Button variant="outline" className="h-[40px] w-[50px]">
-          <IoFilter size={20} />
-        </Button>
-          </SheetTrigger>
-          <SheetContent side="left">
-            <SheetHeader>
-              <SheetTitle>Edit profile</SheetTitle>
-              <SheetDescription>
-                Make changes to your profile here. Click save when you're done.
-              </SheetDescription>
-            </SheetHeader>
-            <div className="grid gap-4 py-4">
-              <div className="grid items-center grid-cols-4 gap-4">
-                <Label htmlFor="name" className="text-right">
-                  Name
-                </Label>
-                <Input id="name" value="Pedro Duarte" className="col-span-3" />
-              </div>
-              <div className="grid items-center grid-cols-4 gap-4">
-                <Label htmlFor="username" className="text-right">
-                  Username
-                </Label>
-                <Input id="username" value="@peduarte" className="col-span-3" />
-              </div>
-            </div>
-            <SheetFooter>
-              <SheetClose asChild>
-                <Button type="submit">Save changes</Button>
-              </SheetClose>
-            </SheetFooter>
-          </SheetContent>
-        </Sheet>
-  )
-}
+            <IoFilter size={20} />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left">
+          <SheetTitle>{category}</SheetTitle>
+          <SheetDescription>
+            <ComboBox />
+          </SheetDescription>
+
+          <SheetFooter>
+            <SheetClose asChild>
+              <Button type="submit">Save changes</Button>
+            </SheetClose>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
+    </>
+  );
+};
 
 export default Filter;
