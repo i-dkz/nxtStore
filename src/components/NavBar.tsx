@@ -6,6 +6,7 @@ import { useCartStore } from "@/store/CartStore";
 import CartIcon from "./CartIcon";
 import { Button } from "@/registry/new-york/ui/button";
 import { SearchDialog } from "./SearchDialog";
+import { IoFilter } from "react-icons/io5";
 
 const NavBar = () => {
   const cart = useCartStore((state) => state.cart);
@@ -23,6 +24,8 @@ const NavBar = () => {
           nxtStore
         </div>
       </Link>
+
+      <Button variant="outline" className="h-[40px] w-[50px]"><IoFilter size={20}/></Button>
 
       <div className="w-full max-sm:hidden">
         <SearchBar />
