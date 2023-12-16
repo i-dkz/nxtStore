@@ -18,6 +18,10 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+interface Props {
+    onSelectCategory: () => void;
+}
+
 const frameworks = [
   {
     value: "next.js",
@@ -41,7 +45,7 @@ const frameworks = [
   },
 ]
 
-export function ComboBox() {
+export function ComboBox({onSelectCategory} : Props) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
 

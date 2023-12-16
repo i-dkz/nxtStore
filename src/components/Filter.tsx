@@ -28,7 +28,8 @@ const filters = {
 };
 
 const Filter = () => {
-  const [category, setCategory] = useState("");
+  
+  const [value, setValue] = useState("")
 
   return (
     <>
@@ -39,9 +40,9 @@ const Filter = () => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left">
-          <SheetTitle>{category}</SheetTitle>
+          <SheetTitle>Category</SheetTitle>
           <SheetDescription>
-            <ComboBox />
+            
           </SheetDescription>
 
           <SheetFooter>
