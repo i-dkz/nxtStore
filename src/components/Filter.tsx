@@ -8,28 +8,26 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
-import { Label } from "@radix-ui/react-label";
-import { Input } from "./ui/input";
 import { IoFilter } from "react-icons/io5";
 import { Button } from "@/registry/new-york/ui/button";
-import { useState } from "react";
 import { ComboBox } from "./ui/combobox";
-
-
+import { useCategoryStore } from "@/store/CategoryStore";
 
 const filters = {
   categories: [
     {
-      title: "computers",
-      computers: ["Laptops", "Desktop", "Mini PC"],
+      title: "Computers",
+      subcategory: ["Laptops", "Desktop", "Mini PC"],
     },
-    { title: "Phones", phones: ["Apple", "Google", "Samsung", "Huawei"] },
+    { 
+      title: "Phones", 
+      subcategory: ["Apple", "Google", "Samsung", "Huawei"] 
+    },
   ],
 };
 
 const Filter = () => {
-  
-  const [value, setValue] = useState("")
+  const { selectedCategory } = useCategoryStore();
 
   return (
     <>
@@ -39,15 +37,14 @@ const Filter = () => {
             <IoFilter size={20} />
           </Button>
         </SheetTrigger>
-        <SheetContent side="left">
-          <SheetTitle>Category</SheetTitle>
+        <SheetContent side="left" className="flex flex-col gap-4">
           <SheetDescription>
-            
+            <ComboBox filters={filters.categories} />
           </SheetDescription>
-
+          <SheetTitle>{selectedCategory || "All Categories"}</SheetTitle>
           <SheetFooter>
             <SheetClose asChild>
-              <Button type="submit">Save changes</Button>
+              <Button onSubmit={(e) => e.preventDefault}>Save changes</Button>
             </SheetClose>
           </SheetFooter>
         </SheetContent>

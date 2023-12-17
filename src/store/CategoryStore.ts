@@ -1,7 +1,13 @@
 import { create } from 'zustand';
 
-// Create a store to hold the selected category state
-export const useCategoryStore = create((set) => ({
+// Define the type for the state
+type CategoryState = {
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
+};
+
+// Create a store with the defined state type
+export const useCategoryStore = create<CategoryState>((set) => ({
   selectedCategory: '',
-  setSelectedCategory: (category: string) => set({ selectedCategory: category }),
+  setSelectedCategory: (category) => set({ selectedCategory: category }),
 }));
