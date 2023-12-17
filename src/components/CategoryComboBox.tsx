@@ -20,17 +20,12 @@ import {
 import { useCategoryStore } from "@/store/CategoryStore"
 
 
-interface Category {
-    title: string;
-    subcategory: string[];
-  }
-  
   interface Props {
-    filters: Category[]; // Expects an array of Category
+    filters: string[]; // Expects an array of Category
   }
   
 
-export function ComboBox({filters} : Props) {
+export function CategoryComboBox({filters} : Props) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
   const { selectedCategory, setSelectedCategory } = useCategoryStore();
@@ -50,21 +45,23 @@ export function ComboBox({filters} : Props) {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {value
-            ? selectedCategory
-            : "Select framework..."}
+          {selectedCategory}
           <ChevronsUpDown className="w-4 h-4 ml-2 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>
+      
       <PopoverContent className="w-[200px] p-0">
+        
         <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+           
+          <CommandInput placeholder="Search categories..." />
+          <CommandEmpty>No category found.</CommandEmpty>
+          
           <CommandGroup>
             {filters.map((filter,index) => (
               <CommandItem
                 key={index}
-                value={filter.title}
+                value={filter}
                 onSelect={(currentValue) => {
                   handleCategoryChange(currentValue)
                 }}
@@ -72,10 +69,10 @@ export function ComboBox({filters} : Props) {
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value === filter.title ? "opacity-100" : "opacity-0"
+                    value === filter? "opacity-100" : "opacity-0"
                   )}
                 />
-                {filter.title}
+                {filter}
               </CommandItem>
             ))}
           </CommandGroup>
