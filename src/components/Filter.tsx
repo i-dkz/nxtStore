@@ -21,16 +21,19 @@ interface Subcategories {
 }
 
 const subcategories: Subcategories = {
-  
   computers: ["Laptops", "Desktop", "Mini PC"],
   phones: ["Apple", "Google", "Samsung", "Huawei"],
 };
 
-
 const Filter = () => {
-  const { selectedCategory } = useCategoryStore();
+  const { selectedCategory, selectedSubCategory } = useCategoryStore();
 
-  console.log(subcategories[selectedCategory]);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Selected Category:", selectedCategory);
+    console.log("Selected Subcategory:", selectedSubCategory);
+    // Perform additional actions as needed
+  };
 
   return (
     <>
@@ -42,19 +45,27 @@ const Filter = () => {
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col gap-4">
           <SheetTitle>Category: {selectedCategory}</SheetTitle>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <div className="flex items-center justify-between gap-4 ">
+              Category: <CategoryComboBox filters={categories} />
+            </div>
+            <div className="flex items-center justify-between gap-4">
+              {selectedCategory ? (
+                <>
+                  Type:{" "}
+                  <SubCategoryComboBox
+                    filters={subcategories[selectedCategory]}
+                  />
+                </>
+              ) : undefined}
+            </div>
 
-          <div className="flex items-center justify-between gap-4 ">
-            Category: <CategoryComboBox filters={categories} />
-          </div>
-          <div className="flex items-center justify-between gap-4">
-            {selectedCategory ? <>Type: <SubCategoryComboBox filters={subcategories[selectedCategory]} /></> : undefined}
-          </div>
-
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button onSubmit={(e) => e.preventDefault}>Save changes</Button>
-            </SheetClose>
-          </SheetFooter>
+            <SheetFooter>
+              <SheetClose asChild>
+                <Button type="submit">Save changes</Button>
+              </SheetClose>
+            </SheetFooter>
+          </form>
         </SheetContent>
       </Sheet>
     </>

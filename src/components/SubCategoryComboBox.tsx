@@ -29,15 +29,17 @@ import { useState } from "react"
 export function SubCategoryComboBox({filters} : Props) {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState("")
-  const { selectedCategory } = useCategoryStore();
+  const { selectedCategory, setSelectedSubCategory, selectedSubCategory } = useCategoryStore();
 
   const handleValueChange = (val: string) => {
     setValue(val);
     setOpen(false); 
+    setSelectedSubCategory(val);
   };
 
   React.useEffect(() => {
     setValue("Select Type");
+    
   }, [selectedCategory]);
   
   return (
@@ -50,7 +52,7 @@ export function SubCategoryComboBox({filters} : Props) {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {value}
+          {selectedSubCategory}
           <ChevronsUpDown className="w-4 h-4 ml-2 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>
