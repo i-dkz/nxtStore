@@ -26,12 +26,13 @@ const subcategories: Subcategories = {
 };
 
 const Filter = () => {
-  const { selectedCategory, selectedSubCategory } = useCategoryStore();
+  const { selectedCategory, selectedSubCategory, setSelectedCategory } = useCategoryStore();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Selected Category:", selectedCategory);
     console.log("Selected Subcategory:", selectedSubCategory);
+    setSelectedCategory("");
     // Perform additional actions as needed
   };
 
@@ -44,8 +45,8 @@ const Filter = () => {
           </Button>
         </SheetTrigger>
         <SheetContent side="left" className="flex flex-col gap-4">
-          <SheetTitle>Category: {selectedCategory}</SheetTitle>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-8">
             <div className="flex items-center justify-between gap-4 ">
               Category: <CategoryComboBox filters={categories} />
             </div>

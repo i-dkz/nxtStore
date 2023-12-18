@@ -39,7 +39,6 @@ export function SubCategoryComboBox({filters} : Props) {
 
   React.useEffect(() => {
     setValue("Select Type");
-    
   }, [selectedCategory]);
   
   return (
