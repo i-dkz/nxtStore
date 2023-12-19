@@ -12,6 +12,8 @@ import { Button } from "@/registry/new-york/ui/button";
 import { CategoryComboBox } from "./CategoryComboBox";
 import { useCategoryStore } from "@/store/CategoryStore";
 import { SubCategoryComboBox } from "./SubCategoryComboBox";
+import { Slider } from "@/components/ui/slider"
+
 
 const categories = ["Computers", "Phones"];
 interface Subcategories {
@@ -67,6 +69,8 @@ const Filter = () => {
                 undefined
               )}
             </div>
+              Max Price: {}
+              <Slider defaultValue={[0]} max={10000} step={1} />
 
             <SheetFooter>
               <SheetClose asChild>
