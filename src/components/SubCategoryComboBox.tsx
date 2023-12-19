@@ -51,7 +51,7 @@ export function SubCategoryComboBox({filters} : Props) {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {selectedSubCategory}
+          {value}
           <ChevronsUpDown className="w-4 h-4 ml-2 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>
