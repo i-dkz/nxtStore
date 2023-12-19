@@ -13,6 +13,7 @@ import { CategoryComboBox } from "./CategoryComboBox";
 import { useCategoryStore } from "@/store/CategoryStore";
 import { SubCategoryComboBox } from "./SubCategoryComboBox";
 import { Slider } from "@/components/ui/slider"
+import { usePriceStore } from "@/store/PriceStore";
 
 
 const categories = ["Computers", "Phones"];
@@ -35,6 +36,8 @@ const Filter = () => {
     setSelectedSubCategory,
   } = useCategoryStore();
 
+  const { selectedPrice, setSelectedPrice } = usePriceStore();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Selected Category:", selectedCategory);
@@ -42,6 +45,12 @@ const Filter = () => {
     setSelectedCategory("");
     setSelectedSubCategory("");
     // Perform additional actions as needed
+  };
+
+  const handlePriceChange = (newVal: number[]) => {
+    // Assuming newVal is an array, you can access the first element (or adjust based on your Slider component)
+    const selectedPrice = newVal[0];
+    setSelectedPrice(selectedPrice);
   };
 
   return (
@@ -69,8 +78,8 @@ const Filter = () => {
                 undefined
               )}
             </div>
-              Max Price: {}
-              <Slider defaultValue={[0]} max={10000} step={1} />
+              Max Price: {selectedPrice}
+              <Slider defaultValue={[0]} max={10000} step={1} onChange={(e) => console.log("hello")} />
 
             <SheetFooter>
               <SheetClose asChild>
