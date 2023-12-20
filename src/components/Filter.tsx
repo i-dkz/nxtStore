@@ -14,6 +14,7 @@ import { useCategoryStore } from "@/store/CategoryStore";
 import { SubCategoryComboBox } from "./SubCategoryComboBox";
 import { Slider } from "@/components/ui/slider"
 import { usePriceStore } from "@/store/PriceStore";
+import { useRatingStore } from "@/store/RatingStore";
 
 
 const categories = ["Computers", "Phones"];
@@ -37,6 +38,7 @@ const Filter = () => {
   } = useCategoryStore();
 
   const { selectedPrice, setSelectedPrice } = usePriceStore();
+  const { selectedRating, setSelectedRating } = useRatingStore();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,10 +50,16 @@ const Filter = () => {
     // Perform additional actions as needed
   };
 
-  function handleClick(e: React.MouseEvent<HTMLDivElement>) {
+  function handlePriceChange(e: React.MouseEvent<HTMLDivElement>) {
     const target = e.target as HTMLDivElement; // Assuming the event target is a div
     const ariaValueNow = target.getAttribute('aria-valuenow');
     setSelectedPrice(Number(ariaValueNow));
+  }
+
+  function handleRatingChange(e: React.MouseEvent<HTMLDivElement>) {
+    const target = e.target as HTMLDivElement; // Assuming the event target is a div
+    const ariaValueNow = target.getAttribute('aria-valuenow');
+    setSelectedRating(Number(ariaValueNow));
   }
   
 
@@ -81,10 +89,10 @@ const Filter = () => {
               )}
             </div>
               Max Price: ${selectedPrice}
-              <Slider defaultValue={[selectedPrice]} max={10000} step={1} onClick={(e) => handleClick(e)} id="slide"/>
+              <Slider defaultValue={[selectedPrice]} max={10000} step={1} onClick={(e) => handlePriceChange(e)}/>
 
-              Customer Rating: ${selectedPrice}
-              <Slider defaultValue={[selectedPrice]} max={10000} step={1} onClick={(e) => handleClick(e)} id="slide"/>
+              Customer Rating: {selectedRating} / 5
+              <Slider defaultValue={[selectedRating]} max={5} step={.1} onClick={(e) => handleRatingChange(e)}/>
 
             <SheetFooter>
               <SheetClose asChild>

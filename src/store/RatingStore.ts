@@ -7,7 +7,7 @@ type RatingState = {
 };
 
 // Create a store with the defined state type
-export const usePriceStore = create<RatingState>((set) => ({
+export const useRatingStore = create<RatingState>((set) => ({
   selectedRating: 0,
   setSelectedRating: (rating) => set({ selectedRating: rating}),
 }));
