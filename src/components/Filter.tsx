@@ -42,8 +42,9 @@ const Filter = () => {
     e.preventDefault();
     console.log("Selected Category:", selectedCategory);
     console.log("Selected Subcategory:", selectedSubCategory);
-    setSelectedCategory("");
-    setSelectedSubCategory("");
+    // setSelectedCategory("");
+    // setSelectedSubCategory("");
+    // setSelectedPrice(0);
     // Perform additional actions as needed
   };
 
@@ -51,15 +52,8 @@ const Filter = () => {
     const target = e.target as HTMLDivElement; // Assuming the event target is a div
     const ariaValueNow = target.getAttribute('aria-valuenow');
     setSelectedPrice(Number(ariaValueNow));
-    
   }
   
-
-  const handlePriceChange = (newVal: number[]) => {
-    // Assuming newVal is an array, you can access the first element (or adjust based on your Slider component)
-    const selectedPrice = newVal[0];
-    
-  };
 
   return (
     <>
@@ -87,6 +81,9 @@ const Filter = () => {
               )}
             </div>
               Max Price: ${selectedPrice}
+              <Slider defaultValue={[selectedPrice]} max={10000} step={1} onClick={(e) => handleClick(e)} id="slide"/>
+
+              Customer Rating: ${selectedPrice}
               <Slider defaultValue={[selectedPrice]} max={10000} step={1} onClick={(e) => handleClick(e)} id="slide"/>
 
             <SheetFooter>
