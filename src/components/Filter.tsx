@@ -47,10 +47,18 @@ const Filter = () => {
     // Perform additional actions as needed
   };
 
+  function handleClick(e: React.MouseEvent<HTMLDivElement>) {
+    const target = e.target as HTMLDivElement; // Assuming the event target is a div
+    const ariaValueNow = target.getAttribute('aria-valuenow');
+    setSelectedPrice(Number(ariaValueNow));
+    
+  }
+  
+
   const handlePriceChange = (newVal: number[]) => {
     // Assuming newVal is an array, you can access the first element (or adjust based on your Slider component)
     const selectedPrice = newVal[0];
-    setSelectedPrice(selectedPrice);
+    
   };
 
   return (
@@ -78,8 +86,8 @@ const Filter = () => {
                 undefined
               )}
             </div>
-              Max Price: {selectedPrice}
-              <Slider defaultValue={[0]} max={10000} step={1} onChange={(e) => console.log("hello")} />
+              Max Price: ${selectedPrice}
+              <Slider defaultValue={[selectedPrice]} max={10000} step={1} onClick={(e) => handleClick(e)} id="slide"/>
 
             <SheetFooter>
               <SheetClose asChild>
