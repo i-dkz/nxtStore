@@ -15,6 +15,7 @@ import { SubCategoryComboBox } from "./SubCategoryComboBox";
 import { Slider } from "@/components/ui/slider"
 import { usePriceStore } from "@/store/PriceStore";
 import { useRatingStore } from "@/store/RatingStore";
+import { useDiscountStore } from "@/store/DiscountStore";
 
 
 const categories = ["Computers", "Phones"];
@@ -39,6 +40,7 @@ const Filter = () => {
 
   const { selectedPrice, setSelectedPrice } = usePriceStore();
   const { selectedRating, setSelectedRating } = useRatingStore();
+  const { selectedDiscount, setSelectedDiscount } = useDiscountStore();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -60,6 +62,12 @@ const Filter = () => {
     const target = e.target as HTMLDivElement; // Assuming the event target is a div
     const ariaValueNow = target.getAttribute('aria-valuenow');
     setSelectedRating(Number(ariaValueNow));
+  }
+
+  function handleDiscountChange(e: React.MouseEvent<HTMLDivElement>) {
+    const target = e.target as HTMLDivElement; // Assuming the event target is a div
+    const ariaValueNow = target.getAttribute('aria-valuenow');
+    setSelectedDiscount(Number(ariaValueNow));
   }
   
 
@@ -93,6 +101,9 @@ const Filter = () => {
 
               Customer Rating: {selectedRating} / 5
               <Slider defaultValue={[selectedRating]} max={5} step={.1} onClick={(e) => handleRatingChange(e)}/>
+
+              Discount: {selectedDiscount}% or more
+              <Slider defaultValue={[selectedDiscount]} max={100} step={.1} onClick={(e) => handleDiscountChange(e)}/>
 
             <SheetFooter>
               <SheetClose asChild>
