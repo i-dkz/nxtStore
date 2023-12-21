@@ -1,22 +1,20 @@
 "use client";
 
+import SearchResults from "@/components/SearchResults";
 import TopDeals from "@/components/TopDeals";
 import { useSearchStore } from "@/store/SearchStore";
 
 import { useEffect, useState } from "react";
 
-type Product = {
-  id: number;
-  title: string;
-  description: string;
-  thumbnail: string;
-  price: number;
-};
+export interface ProductQuery {
+  searchText: string;
+}
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
-  const { selectedSearch, setSelectedSearch } = useSearchStore();
+  const { selectedSearch, setSelectedSearch, productQuery } = useSearchStore();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,5 +44,7 @@ export default function Home() {
     fetchData();
   }, [selectedSearch]);
 
-  return <TopDeals isLoading={isLoading} products={products}/>;
+  return <SearchResults productQuery={productQuery}/>;
+  
+  
 }

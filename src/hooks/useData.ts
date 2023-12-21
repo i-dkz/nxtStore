@@ -5,7 +5,7 @@ import { AxiosRequestConfig, CanceledError } from "axios";
 
 interface FetchResponse<T> {
     count: number;
-    results: T[];
+    products: T[];
 }
 
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {  
@@ -20,7 +20,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
       apiClient
         .get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
         .then((res) => {
-          setData(res.data.results);
+          setData(res.data.products);
           setLoading(false);
         })
         .catch((err) => {
@@ -30,6 +30,8 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
         });
       return () => controller.abort();
     }, deps ? [...deps] : []);
+
+   
   
     return { data, error, isLoading };
 };

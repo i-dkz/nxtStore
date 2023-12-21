@@ -3,15 +3,16 @@ import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 
 const SearchBar = () => {
-  const {setSelectedSearch} = useSearchStore();
+  const {setSelectedSearch, productQuery, setProductQuery} = useSearchStore();
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Get the input value
     const inputValue = (event.currentTarget.elements.namedItem('searchInput') as HTMLInputElement).value;
+    setSelectedSearch(inputValue);
 
-    setSelectedSearch(inputValue)
+    setProductQuery({...productQuery, searchText: inputValue });
     // Add your logic for handling the search here
     console.log(inputValue);
   };

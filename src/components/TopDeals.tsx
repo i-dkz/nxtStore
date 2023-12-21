@@ -1,14 +1,7 @@
 import Link from "next/link";
 import Card from "@/components/ProductCard";
 import Skeleton from "@/components/Skeleton";
-
-type Product = {
-  id: number;
-  title: string;
-  description: string;
-  thumbnail: string;
-  price: number;
-};
+import { Product } from "../hooks/useSearch";
 
 interface Props {
   isLoading: boolean;
