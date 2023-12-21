@@ -4,12 +4,14 @@ import Skeleton from "./Skeleton";
 import { Product } from "@/hooks/useSearch";
 import Link from "next/link";
 import Card from "./ProductCard";
+import { useState } from "react";
 
 interface Props {
   productQuery: ProductQuery;
 }
 
 const SearchResults = ({productQuery} : Props) => {
+  
   const { data, error, isLoading } = useSearch(productQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
