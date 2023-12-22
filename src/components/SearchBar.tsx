@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 const SearchBar = () => {
   const path = usePathname();
   const router = useRouter();
-  const { selectedSearch, setSelectedSearch, productQuery, setProductQuery } = useSearchStore();
+  const { setSelectedSearch, productQuery, setProductQuery } = useSearchStore();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,8 +26,10 @@ const SearchBar = () => {
   useEffect(() => {
     // Reset the search input when path changes
     setSelectedSearch("");
-    setProductQuery({...productQuery})
-    let searchInput = document.getElementById("searchInput") as HTMLInputElement;
+    setProductQuery({ ...productQuery });
+    let searchInput = document.getElementById(
+      "searchInput"
+    ) as HTMLInputElement;
     searchInput.value = "";
   }, [path]);
 
