@@ -19,8 +19,8 @@ const SearchResults = ({ productQuery }: Props) => {
   if (error) return <p>{error}</p>;
   return (
     <div>
-      <div className="w-full">
-        <h1 className="flex items-center justify-center w-full mb-10 text-3xl font-bold">
+      <div className="flex flex-col items-center w-full">
+        <h1 className="flex items-center justify-center w-[90%] mb-10 text-3xl font-bold">
           {selectedSearch === "" ? <>Top Deals!</> : <>showing results for: {selectedSearch}</>}
         </h1>
         <div className="flex flex-wrap items-center justify-center w-full gap-4">
