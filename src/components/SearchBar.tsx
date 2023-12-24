@@ -2,11 +2,15 @@ import { useSearchStore } from "@/store/SearchStore";
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { usePathname, useRouter } from "next/navigation";
+import { useDialogStore } from "@/store/DialogStore";
+
+
 
 const SearchBar = () => {
   const path = usePathname();
   const router = useRouter();
   const { setSelectedSearch, productQuery, setProductQuery } = useSearchStore();
+  const {selectedDialog, setSelectedDialog} = useDialogStore();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,6 +21,7 @@ const SearchBar = () => {
     setSelectedSearch(inputValue);
 
     setProductQuery({ ...productQuery, searchText: inputValue });
+    setSelectedDialog(false);
 
     path === "/" ? null : router.push("./");
 

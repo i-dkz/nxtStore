@@ -2,14 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { FaSearch } from "react-icons/fa";
 import SearchBar from "./SearchBar";
-import { useState } from "react";
 
-
+import { useDialogStore } from "@/store/DialogStore";
 
 export function SearchDialog() {
+  const { selectedDialog, setSelectedDialog } = useDialogStore();
+
   return (
     <div className="w-[90%]">
-      <Dialog>
+      <Dialog onOpenChange={() => setSelectedDialog(true)} open={selectedDialog}>
         <DialogTrigger asChild>
           <Button variant="outline">
             <FaSearch className="text-gray-500" />
